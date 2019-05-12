@@ -18,5 +18,6 @@ Route::get('/detailLoan/{id}', 'LoanController@showDetailLoan');
 Route::get('/deleteLoan/{id}', 'LoanController@deleteLoan');
 Route::get('/editLoan/{id}', 'LoanController@editLoan');
 Route::post('/editLoan/{id}', 'LoanController@edit');
+Route::post('/advanceSearch', 'LoanController@advanceSearch');
 
 

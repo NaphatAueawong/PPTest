@@ -76,6 +76,19 @@ class LoanController extends Controller
         return  redirect('/');
     }
 
+    public function advanceSearch(Request $request)
+    {
+        $minLoanAmount =  $request->input('minLoanAmount');
+        $maxLoanAmount =  $request->input('maxLoanAmount');
+        $minLoanTerm   =  $request->input('minLoanTerm');
+        $maxLoanTerm   =  $request->input('maxLoanTerm');
+
+        $customers = Customer::whereBetween('loanAmount', [$minLoanAmount, $maxLoanAmount])
+                              ->whereBetween('loanTerm', [$minLoanTerm, $maxLoanTerm])
+                              ->orderBy('id', 'desc')
+                              ->get();
+        return view('homePage')->with('customers', $customers);
+    }
 
     //--------------------------------------------------------------------------------------------------------------------
 
